@@ -62,6 +62,11 @@ void menu() {
             printf("\nUsage [Commands]: \n   sign in (Case Insensitive) \n   sign up (Case Insensitive) \n   exit (Case Insensitive) \n   help (Case Insensitive)");
         }
         else if(strcmp(menu_option_string, "exit") == 0) {
+            if (dayTime() == 1) {
+                printf("Have a nice evening.\n");
+            } else {
+                printf("Have a nice day.\n");
+            }
             return;
         }
         // logic here
