@@ -41,19 +41,20 @@ void menu() {
     char menu_option_string[50] = {0};
     int is_menu_option_valid = 0;
 
-    while(1) {
-        printf("Choose one of the following options:\n");
-        printf("\n1.Sign In [sign in]\n2.Sign Up [sign up] \n3.Exit [exit] \n4.Help [help]\n");
+    printf("\nChoose one of the following options:\n");
+    printf("\n1.Sign In [sign in]\n2.Sign Up [sign up] \n3.Exit [exit] \n4.Help [help]\n");
 
+    while(1) {
+        
         do {
             printf("\n: ");
-            scanf("%s", menu_option_string);
-
+            fgets(menu_option_string, 50, stdin);
+            menu_option_string[(strlen(menu_option_string)-1)] = '\0';
             is_menu_option_valid = validate(menu_option_string);
             if(!is_menu_option_valid) {
                 printf("Option not found. Type help for info.\n");
             }
-            printf("%s", menu_option_string);
+            printf("%s\n", menu_option_string);
 
         } while (!is_menu_option_valid);
 
@@ -61,7 +62,7 @@ void menu() {
             printf("\nUsage [Commands]: \n   sign in (Case Insensitive) \n   sign up (Case Insensitive) \n   exit (Case Insensitive) \n   help (Case Insensitive)");
         }
         else if(strcmp(menu_option_string, "exit") == 0) {
-            return 0;
+            return;
         }
         // logic here
     }
