@@ -1,5 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+int dayTime() {
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+
+    if (tm.tm_hour >= 18) {
+        return 1;
+    }
+
+    return 0;
+}
 
 void menu() {
     unsigned int user_choice = 0;
@@ -27,7 +39,12 @@ void menu() {
             printf("Registration\n"); // Here will be the registration func
             break;
         case 0:
-            printf("Have a nice day/evening.");
+            if (dayTime() == 1) {
+                printf("Have a nice evening.");
+            } else {
+                printf("Have a nice day.");
+            }
+
             return;
     }
 }
